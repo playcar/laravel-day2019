@@ -18,5 +18,5 @@ $speaker->save();
 ```
 
 ### focus
-<p class="fragment text-left text-07">Give an overview of different 'infrastructures' and 'platforms'</p>
+<p class="fragment text-left text-07">Know better Laravel Notification System</p>
 
