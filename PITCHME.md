@@ -23,7 +23,48 @@ $speaker->save();
 ---
 @title[101]
 ### 101
+```php
+class User
+{
+    use Notifiable; // Magic trait
+}
+```
 
++++
+### 101
+```php
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class BaseNotification extends Notification implements ShouldQueue
+{
+    use Queueable;
+
+    public function via($notifiable)
+    {
+        // Custom logic to inject channels
+        return ['mail','database','broadcast'];
+    }
+
+    public function toMail($notifiable)
+    {
+        return (new Illuminate\Notifications\Messages\MailMessage)->view(
+        'email_template', [
+            // view params
+        ])->subject('mail subject');
+    }
+    
+    public function toArray($notifiable)
+    {
+        return [
+            // Notification map
+        ];
+    }
+    // Additional custom formatters
+}
+```
 ---
 @title[channels]
 ### channels
