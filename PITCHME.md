@@ -20,3 +20,31 @@ $speaker->save();
 ### focus
 <p class="fragment text-left text-07">Know better Laravel Notification System</p>
 
+---
+@title[101]
+### 101
+
+---
+@title[channels]
+### channels
+
+---
+@title[custom channels]
+### custom channels
+
+## laravel-notification-channels.com
+
+---
+@title[database channel]
+### database channel
+---
+@title[queue]
+### queue
+---
+@title[Questions]
+# Questions?
+![QR](assets/img/qr.png)
+<p style="text-align: center !important;">https://joind.in/talk/80680</p>
+---
+@title[hiring]
+![QR](assets/img/fleet.jpg)
