@@ -1,2 +1,2 @@
 @title[hiring]
-![fleet](assets/img/fleet.jpg)
+![fleet](assets/img/fleetsmall.jpg)

@@ -47,4 +47,4 @@ $speaker->save();
 <p style="text-align: center !important;">https://joind.in/talk/80680</p>
 ---
 @title[hiring]
-![fleet](assets/img/fleet.jpg)
+![fleet](assets/img/fleetsmall.jpg)
