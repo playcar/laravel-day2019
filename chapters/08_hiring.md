@@ -1,2 +1,2 @@
 @title[hiring]
-![QR](assets/img/fleet.jpg)
+![fleet](assets/img/fleet.jpg)
