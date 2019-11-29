@@ -6,6 +6,7 @@ To speed up response times is necessary to use the background workers to send no
 ```php
 // On the notification costructor
 $this->queue = 'queue-name';
+
 // When scheduling the notification
 $user->notify((new SampleNotification())->onQueue("queue-name"));
 ```

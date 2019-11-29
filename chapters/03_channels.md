@@ -48,28 +48,26 @@ interface SmsSender {
 $this->app->bind(SmsSender::class, function () {
     $currentDriver = config('sms.default');
     $currentConfig = config('sms.' . $currentDriver);
-    switch (config('sms.' . $currentDriver . '.driver')) {
-        case 'twilio':
-            return new Twilio($currentConfig);
-            break;
-        case 'voipcheap':
-            return new Voipcheap($currentConfig);
-            break;
-        default:
-            return new Log();
-            }
-        });
+    if(config('sms.' . $currentDriver . '.driver') == "log") {
+        return new Log();
+    } else {
+        return new Twilio($currentConfig);
+    }
 ```
 
 +++
 ```php
-class Log
+class Log implements SmsSender
 {
     public function sendSMS(string $to, string $message)
     {
         $message = date("Y-m-d H:i:s") . ' ' . $to . ' >> ' . $message;
 
-        file_put_contents(public_path('sms.html'), $message . "<br>", FILE_APPEND);
+        file_put_contents(
+            public_path('sms.html'), 
+            $message . "<br>", 
+            FILE_APPEND
+        );
     }
 }
 ```
