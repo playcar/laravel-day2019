@@ -67,7 +67,7 @@ class BaseNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         // Classic email
-        return (new Illuminate\Notifications\Messages\MailMessage)->view(
+        return (new MailMessage)->view(
         'email_template_view', [
             // view params
         ])->subject('mail subject');
@@ -85,33 +85,8 @@ class BaseNotification extends Notification implements ShouldQueue
         ];
     }
     // Additional custom formatters
-    
-    public function getSlug()
-    {
-        $name = Str::kebab(get_class($this));
-        $name = explode("\\", $name);
-        $name = array_pop($name);
-        return trim($name, "-");
-    }
 
-    public function getTranslation($field, $replacements = [])
-    {
-        $base = __("notifications." . $this->getSlug() . "." . $field);
-
-        if (is_array($base)) {
-            for ($i = 0; $i < sizeof($base); $i++) {
-                foreach ($replacements as $key => $value) {
-                    $base[$i] = str_replace("#$key#", $value, $base[$i]);
-                }
-            }
-        } else if (is_string($base)) {
-            foreach ($replacements as $key => $value) {
-                $base = str_replace("#$key#", $value, $base);
-            }
-        }
-        return $base;
-    }
-
+    // Maybe some logic to translate the notifications
 }
 ```
 ---
