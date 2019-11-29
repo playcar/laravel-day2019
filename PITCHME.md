@@ -106,7 +106,6 @@ class BetterBaseNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        // Markdown email
         return (new MailMessage)
             ->greeting('Hello!')
             ->line($this->content);
