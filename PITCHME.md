@@ -179,7 +179,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    // TODO: Check this
     private $casts = [
         'data' => 'array',
     ]
@@ -202,7 +201,6 @@ class Notification extends Model
 ```php
     $unreadNotifications = Notification::whereNotifiableType(User::class)
                                 ->whereNotifiableId(1)
-                                ->where("created_at","<",Carbon::now()) // TODO: remove this
                                 ->whereNull('read_at')
                                 ->get();
 ```
