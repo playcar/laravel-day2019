@@ -43,19 +43,19 @@ interface SmsSender {
     public function sendSMS(string $to, string $message);
 }
 ```
-+++
+
 ```php
 $this->app->bind(SmsSender::class, function () {
     $currentDriver = config('sms.default');
         switch (config('sms.' . $currentDriver . '.driver')) {
             case 'twilio':
-                return new \Ennetech\SmsSender\Providers\Twilio(config('sms.' . $currentDriver));
+                return new Twilio(config('sms.' . $currentDriver));
                 break;
             case 'voipcheap':
-                return new \Ennetech\SmsSender\Providers\Voipcheap(config('sms.' . $currentDriver));
+                return new Voipcheap(config('sms.' . $currentDriver));
                 break;
             default:
-                return new \Ennetech\SmsSender\Providers\Log();
+                return new Log();
             }
         });
 ```
