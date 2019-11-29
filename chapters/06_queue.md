@@ -1,6 +1,6 @@
 @title[queue]
 ### queue
-It's important to have a dedicated queue for "urgent" notifications
+To speed up response times is necessary to use the background workers to send notifications, but it's also important to have a dedicated queue for "urgent" notifications
 +++
 #### Customize the queue channel
 ```php
