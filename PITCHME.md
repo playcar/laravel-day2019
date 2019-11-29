@@ -222,4 +222,5 @@ $user->notify((new SampleNotification())->onQueue("queue-name"));
 ---
 @title[hiring]
 ![fleet](assets/img/fleetsmall.jpg)
+fb.me/riccardo.scasseddu - @ennetech
 ---
