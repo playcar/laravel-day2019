@@ -114,7 +114,7 @@ class SmsChannel
     }
 
     public function send(
-        Driver $notifiable, 
+        User $notifiable, 
         BaseNotification $notification)
     {
         $message = $notification->toSms($notifiable);
