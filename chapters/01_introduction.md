@@ -7,7 +7,6 @@ $speaker->twitterHandle = '@ennetech';
 $speaker->education = 'Graduated in Computer Science';
 $speaker->occupation = 'CTO @ Playcar';
 $speaker->roles = ['Solution architect', 'Hardware integrations'];
-$speaker->wannaBe = 'Master of the world';
 $speaker->talkSpeed = 1.2;
 $speaker->save();
 ```
