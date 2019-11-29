@@ -41,7 +41,6 @@ class User
 ```
 
 +++
-### 101
 ```php
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notifiable;
