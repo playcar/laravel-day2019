@@ -8,7 +8,7 @@ A channel is a connector between the domain specific notification and (normally)
 
 ```php
 use App\Contracts\SmsSender;
-use App\Models\Driver;
+use App\Models\User;
 use App\Notifications\BaseNotification;
 
 
