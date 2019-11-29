@@ -84,7 +84,6 @@ class BaseNotification extends Notification implements ShouldQueue
 }
 ```
 +++
-### 101
 ```php
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notifiable;
