@@ -119,7 +119,9 @@ class SmsChannel
     {
         $message = $notification->toSms($notifiable);
 
-        $sanitizedNumber = number_sanitizer($notifiable->mobile_phone);
+        $sanitizedNumber = number_sanitizer(
+                $notifiable->mobile_phone
+            );
 
         $this->sender->sendSMS($sanitizedNumber, $message);
     }
