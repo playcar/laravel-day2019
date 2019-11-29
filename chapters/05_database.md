@@ -28,9 +28,6 @@ class Notification extends Model
     }
 }
 
-```
-+++
-```php
     $unreadNotifications = Notification::whereNotifiableType(User::class)
                                 ->whereNotifiableId(1)
                                 ->whereNull('read_at')

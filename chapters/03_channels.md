@@ -44,19 +44,19 @@ interface SmsSender {
 }
 ```
 
-
 ```php
 $this->app->bind(SmsSender::class, function () {
     $currentDriver = config('sms.default');
-        switch (config('sms.' . $currentDriver . '.driver')) {
-            case 'twilio':
-                return new Twilio(config('sms.' . $currentDriver));
-                break;
-            case 'voipcheap':
-                return new Voipcheap(config('sms.' . $currentDriver));
-                break;
-            default:
-                return new Log();
+    $currentConfig = config('sms.' . $currentDriver);
+    switch (config('sms.' . $currentDriver . '.driver')) {
+        case 'twilio':
+            return new Twilio($currentConfig);
+            break;
+        case 'voipcheap':
+            return new Voipcheap($currentConfig);
+            break;
+        default:
+            return new Log();
             }
         });
 ```
