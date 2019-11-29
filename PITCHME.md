@@ -168,7 +168,7 @@ class Log
 ---
 @title[database channel]
 ### database channel
-Important channel if in your application is present a "notification history" feature where a user can see all past notifications
+Important channel if in your application is present a "notification history" feature where a user can see all past notifications or if is needed to log the notification for future inspection
 +++
 ```php
 <?php
