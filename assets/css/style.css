@@ -52,4 +52,9 @@
 
 .hljs {
     font-size: 100% !important;
+    width: 100% !important;
+}
+
+pre {
+    width: 100% !important;
 }
