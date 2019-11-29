@@ -72,7 +72,9 @@ class BaseNotification extends Notification implements ShouldQueue
             // view params
         ])->subject('mail subject');
         // Markdown email
-        // TODO: Complete this
+        return (new MailMessage)
+            ->greeting('Hello!')
+            ->line('Some text');
     }
     
     // Used also for the database and broadcast channel
