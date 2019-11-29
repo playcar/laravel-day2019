@@ -22,11 +22,11 @@ $speaker->save();
 +++
 ### about playcar
 <div class="text-05">
-- 2015 - Company start as a car sharing operator with 9 cars<br>
-- 2016 - Start developing Playmoove as a modular car sharing platform (fleet of 40 cars)<br>
-- 2017 - Start using Playmoove as the platform to provide car sharing to people of Cagliari (fleet of 60 cars)<br>
-- 2018 - Launch of the free floating service and scale up to 100 cars<br>
-- 2019 - Start selling the platform around the world as a B2B Soutions, we have clients in South America, Hungary, Azorre Island with new ones being deployed right now<br>
+2015<br>Company start as a car sharing operator with 9 cars<br>
+2016<br>Start developing Playmoove as a modular car sharing platform (fleet of 40 cars)<br>
+2017<br>Start using Playmoove as the platform to provide car sharing to people of Cagliari (fleet of 60 cars)<br>
+2018<br>Launch of the free floating service and scale up to 100 cars<br>
+2019<br>Start selling the platform around the world as a B2B Soutions, we have clients in South America, Hungary, Azorre Island with new ones being deployed right now<br>
 </div>
 
 #### Laravel is the core framework for serving all our business logic!
