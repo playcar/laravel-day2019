@@ -113,11 +113,13 @@ class SmsChannel
         $this->sender = $sender;
     }
 
-    public function send(Driver $notifiable, BaseNotification $notification)
+    public function send(
+        Driver $notifiable, 
+        BaseNotification $notification)
     {
         $message = $notification->toSms($notifiable);
 
-        $sanitizedNumber = str_replace("-", "", $notifiable->mobile_phone);
+        $sanitizedNumber = number_sanitizer($notifiable->mobile_phone);
 
         $this->sender->sendSMS($sanitizedNumber, $message);
     }
