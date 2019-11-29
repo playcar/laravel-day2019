@@ -11,7 +11,7 @@ $speaker->fullName = 'Riccardo Scasseddu';
 $speaker->twitterHandle = '@ennetech';
 $speaker->education = 'Graduated in Computer Science';
 $speaker->occupation = 'CTO @ Playcar';
-$speaker->roles = ['Full Stack Developer', 'DevOps', 'Hardware'];
+$speaker->roles = ['Solution architect', 'Hardware integrations'];
 $speaker->wannaBe = 'Master of the world';
 $speaker->talkSpeed = 1.2;
 $speaker->save();
@@ -19,7 +19,15 @@ $speaker->save();
 
 ### focus
 <p class="fragment text-left text-07">Know better Laravel Notification System</p>
++++
+### about playcar
+2015 - Company start as a car sharing operator with 9 cars
+2016 - Start developing Playmoove as a modular car sharing platform (fleet of 40 cars)
+2017 - Start using Playmoove as the platform to provide car sharing to people of Cagliari (fleet of 60 cars)
+2018 - Launch of the free floating service and scale up to 100 cars
+2019 - Start selling the platform around the world as a B2B Soutions, we have clients in South America, Hungary, Azorre Island with new ones being deployed right now
 
+#### Laravel is the core framework for all our business logic!
 ---
 @title[101]
 ### 101
@@ -27,6 +35,7 @@ $speaker->save();
 class User
 {
     use Notifiable; // Magic trait
+    // Having a 'email' field in the User model is all is needed to send email
 }
 ```
 
@@ -42,6 +51,11 @@ class BaseNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    // BONUS: Use contructor method to set up common notifications part
+    private $subject;
+    private $content;
+    private $attachments;
+
     public function via($notifiable)
     {
         // Custom logic to inject channels
@@ -50,27 +64,33 @@ class BaseNotification extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
+        // Classic email
         return (new Illuminate\Notifications\Messages\MailMessage)->view(
-        'email_template', [
+        'email_template_view', [
             // view params
         ])->subject('mail subject');
+        // Markdown email
+        // TODO: Complete this
     }
     
+    // Used also for the database and broadcast channel
     public function toArray($notifiable)
     {
         return [
-            // Notification map
+            // Notification data values map
         ];
     }
     // Additional custom formatters
+
+    // Translation provider
+    // Multilang notifications
 }
 ```
 ---
 @title[channels]
 ### channels
-
----
-@title[custom channels]
+A channel is a connector between the domain specific notification and (normally) an external service
++++
 ### custom channels
 
 #### laravel-notification-channels.com
@@ -139,6 +159,7 @@ class Log
 ---
 @title[database channel]
 ### database channel
+Important channel if in your application is present a "notification history" feature where a user can see all past notifications
 +++
 ```php
 <?php
@@ -149,6 +170,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
+    // TODO: Check this
+    private $casts = [
+        'data' => 'array',
+    ]
+
     public function notifiable()
     {
         return $this->morphTo();
@@ -167,7 +193,7 @@ class Notification extends Model
 ```php
     $unreadNotifications = Notification::whereNotifiableType(User::class)
                                 ->whereNotifiableId(1)
-                                ->where("created_ad","<",Carbon::now())
+                                ->where("created_at","<",Carbon::now()) // TODO: remove this
                                 ->whereNull('read_at')
                                 ->get();
 ```
@@ -176,9 +202,15 @@ class Notification extends Model
 ### queue
 Sending notifications can take time, especially if the channel needs an external API call to deliver the notification. To speed up your application's response time, let your notification be queued by adding the ShouldQueue interface and Queueable trait to your class. The interface and trait are already imported for all notifications generated using make:notification, so you may immediately add them to your notification class
 
+It's important to have a dedicated queue for "urgent" notifications
++++
+#### Customize the queue channel
+```php
+// On the notification costructor
 $this->queue = 'queue-name';
+// When scheduling the notification
 $user->notify((new App\Notifications\SampleNotification())->onQueue("queue-name"));
-
+```
 
 ---
 @title[Questions]
@@ -188,3 +220,4 @@ $user->notify((new App\Notifications\SampleNotification())->onQueue("queue-name"
 ---
 @title[hiring]
 ![fleet](assets/img/fleetsmall.jpg)
+---

@@ -1,5 +1,6 @@
 @title[database channel]
 ### database channel
+Important channel if in your application is present a "notification history" feature where a user can see all past notifications
 +++
 ```php
 <?php
@@ -10,6 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
+    // TODO: Check this
+    private $casts = [
+        'data' => 'array',
+    ]
+
     public function notifiable()
     {
         return $this->morphTo();
@@ -28,7 +34,7 @@ class Notification extends Model
 ```php
     $unreadNotifications = Notification::whereNotifiableType(User::class)
                                 ->whereNotifiableId(1)
-                                ->where("created_ad","<",Carbon::now())
+                                ->where("created_at","<",Carbon::now()) // TODO: remove this
                                 ->whereNull('read_at')
                                 ->get();
 ```
