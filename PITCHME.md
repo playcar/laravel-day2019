@@ -126,7 +126,12 @@ class BetterBaseNotification extends Notification implements ShouldQueue
     ...
 }
 
-$user->notify(new BetterBaseNotification('order created', 'order 1337 has been inserted in the system'))
+$user->notify(
+    new BetterBaseNotification(
+        'order created', 
+        'order 1337 has been inserted in the system'
+        )
+    );
 ```
 ---
 @title[channels]
